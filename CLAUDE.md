@@ -71,6 +71,9 @@ out wrong.
   redirected to a log file in the scratchpad, then read the log tail. To
   block until one finishes, `Wait-Process -Id <scons pid> -Timeout 570`.
 - `WARNING: msgfmt not found` during a build is harmless.
+- Do not pipe the editor exe into `Select-Object -First N` when smoke
+  testing. It ends the pipeline early, kills the process and reports exit -1.
+  Capture the output into a variable and read `$LASTEXITCODE` straight after.
 - `Start-Sleep` polling is blocked in this harness. Use `run_in_background`
   and wait for the notification.
 - The session is not elevated. Anything needing admin (VS installer changes,
