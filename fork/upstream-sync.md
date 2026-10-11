@@ -9,7 +9,8 @@ branch checked out.
 ## The quick way: `/sync-upstream`
 
 Claude Code has a skill that runs this whole procedure. Start Claude Code in
-the repository root and type one of:
+the repository root (the fork's own folder, the one containing `SConstruct`)
+with `custom` checked out, and type one of:
 
 | Command | What it does |
 |---|---|

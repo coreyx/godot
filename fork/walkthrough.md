@@ -10,6 +10,43 @@ Related files, all on the `custom` branch:
 - [../CLAUDE.md](../CLAUDE.md): notes Claude Code loads when working here
 - `.claude\skills\sync-upstream\SKILL.md`: the `/sync-upstream` skill
 
+## Resuming work
+
+To pick the fork back up at any time:
+
+1. Open a terminal in the fork's own folder, the one that contains
+   `SConstruct`. These docs call it the repository root.
+2. Check that the `custom` branch is checked out:
+
+   ```powershell
+   git branch --show-current     # should print custom
+   git switch custom             # if it printed anything else
+   ```
+
+3. Start Claude Code from that folder:
+
+   ```powershell
+   claude
+   ```
+
+Both the folder and the branch matter. Claude Code reads `CLAUDE.md` and the
+`/sync-upstream` skill from the folder it is started in, and those files only
+exist on `custom`. Started one folder up, or with another branch checked out,
+it will not have the skill.
+
+Then:
+
+| To do this | Type |
+|---|---|
+| See how far behind upstream the fork is | `/sync-upstream check` |
+| Pull in upstream changes, rebuild and test | `/sync-upstream` |
+| The same, then publish to GitHub | `/sync-upstream push` |
+| Rebuild the editor | `py -m SCons platform=windows`, or ask Claude to |
+| Launch the editor | `.\bin\godot.windows.editor.x86_64.exe` |
+
+What `/sync-upstream` does, when it stops to ask, and how to do the same
+steps by hand are in [upstream-sync.md](upstream-sync.md).
+
 ## Layout
 
 Paths are relative to the repository root.
